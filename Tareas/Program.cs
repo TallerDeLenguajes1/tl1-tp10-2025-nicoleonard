@@ -4,7 +4,11 @@ List<Tarea> ListaDeTareas = await GetTareasAsync();
 
 foreach (var tarea in ListaDeTareas)
 {
-    Console.WriteLine($"Tarea: {tarea.id} - Descripcion: {tarea.title}");
+    if(!tarea.completed)Console.WriteLine($"Tarea: {tarea.title} - Estado: {(tarea.completed? "Completada":"Pendiente")}");
+}
+foreach (var tarea in ListaDeTareas)
+{
+    if(tarea.completed)Console.WriteLine($"Tarea: {tarea.title} - Estado: {(tarea.completed? "Completada":"Pendiente")}");
 }
 
 static async Task<List<Tarea>> GetTareasAsync()
