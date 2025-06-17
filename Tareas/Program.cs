@@ -8,8 +8,13 @@ foreach (var tarea in ListaDeTareas)
 }
 foreach (var tarea in ListaDeTareas)
 {
-    if(tarea.completed)Console.WriteLine($"Tarea: {tarea.title} - Estado: {(tarea.completed? "Completada":"Pendiente")}");
+    if (tarea.completed) Console.WriteLine($"Tarea: {tarea.title} - Estado: {(tarea.completed ? "Completada" : "Pendiente")}");
 }
+Console.WriteLine();
+
+string jsonTareas = JsonSerializer.Serialize(ListaDeTareas);
+Console.WriteLine(jsonTareas);
+File.WriteAllText("tareas.json",jsonTareas);
 
 static async Task<List<Tarea>> GetTareasAsync()
 {
